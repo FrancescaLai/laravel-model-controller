@@ -9,6 +9,7 @@
 <body>
      
     <h1>{{$movie->title}}</h1>
+    <h2>{{$movie->plot}}</h2>
 
 </body>
 </html>
