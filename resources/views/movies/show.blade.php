@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-     
+    <a href="{{route('movies.index')}}">Torna alla Home</a>
+
     <h1>{{$movie->title}}</h1>
     <h2>{{$movie->plot}}</h2>
 
