@@ -6,7 +6,7 @@
 
 @section('main-content')
     <div class="mb-3 text-right">
-		<button type="button" class="btn btn-outline-success">Add movie</button>
+		<a href="{{route('movies.create')}}"><button type="button" class="btn btn-outline-success">Add movie</button></a>
 	</div>
 	
 	<table class="table table-striped">
