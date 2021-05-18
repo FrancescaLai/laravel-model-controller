@@ -1,26 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>All movies</title>
-</head>
-<body>
-    
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-   <h1>All movies</h1>
+		<link rel="stylesheet" href="{{asset('css/app.css')}}">
+		<title>All movies</title>
+	</head>
+	<body>		
+		<main>
+			{{-- Lista film completa--}}
+			<div class="container">
 
-   <ul>
-       @foreach ($movies as $movie)
-       <li>
-           <h3>{{$movie->title}}</h3>
-           <p>{{$movie->author}}</p>
+				<h1>All Movies</h1>
 
-           <a href="{{route('movies.show', ['movie' => $movie->id])}}">Dettagli film</a>
-       </li>
-       @endforeach
-   </ul>
-
-</body>
+				<ol class="listed-movies">
+					@foreach ($movies as $movie)
+					<li>
+						<h3>{{$movie->title}}</h3>
+						<h4>{{$movie->author}}</h4>
+						<p>{{$movie->genre}}</p>
+						<a href="{{route('movies.show', [ 'movie' => $movie->id ])}}">Dettaglio film</a>
+					</li>
+					@endforeach
+				</ol>
+			</div>
+			{{-- //Lista film completa--}}
+		</main>		
+	</body>
 </html>

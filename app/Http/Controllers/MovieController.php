@@ -15,11 +15,12 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $movies = Movie::all();
-        
-        return view('movies.index', ['movies' => $movies]);
+
+        return view('movies.index', compact('movies'));
     }
 
     /**
@@ -53,7 +54,7 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
 
-        return view('movies.show', ['movie' => $movie]);
+        return view('movies.show', compact('id', 'movie'));
     }
 
     /**
