@@ -41,7 +41,17 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $movieNew = new Movie();
+
+        $movieNew->title = $data['title'];
+        $movieNew->director = $data['director'];
+        $movieNew->genres = $data['genres'];
+        $movieNew->plot = $data['plot'];
+        $movieNew->year = $data['year'];
+        
+        $movieNew->save();
     }
 
     /**

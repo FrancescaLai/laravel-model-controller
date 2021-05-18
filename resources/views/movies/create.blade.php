@@ -24,7 +24,7 @@
             </div>
             <div class="form-group">
                 <label for="plot">Plot</label>
-                <textarea class="form-control" id="plot" name="plot" rows="10" placeholder="Enter the plot"></textarea>
+                <textarea class="form-control" id="plot" name="plot" rows="80" placeholder="Enter the plot"></textarea>
             </div>
             <div class="form-group">
                 <label for="plot">Year</label>
