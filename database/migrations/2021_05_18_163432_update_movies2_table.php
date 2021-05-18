@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateMoviesTable extends Migration
+class UpdateMovies2Table extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,7 @@ class UpdateMoviesTable extends Migration
     public function up()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->dropColumn('author');
-            $table->dropColumn('genre');
-            $table->string('director', 50)->after('title');
-            $table->string('genres', 50)->after('director');
-            $table->year('year')->after('genres');
+            $table->string('cover_img')->default('https://via.placeholder.com/250');
         });
     }
 
@@ -30,12 +26,7 @@ class UpdateMoviesTable extends Migration
     public function down()
     {
         Schema::table('movies', function (Blueprint $table) {
-            $table->string('author', 50);
-            $table->string('genre', 50);
-            $table->dropColumn('director');
-            $table->dropColumn('genres');
-            $table->dropColumn('year');
+            $table->dropColumn('cover_img');
         });
     }
 }
-

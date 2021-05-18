@@ -41,6 +41,16 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+        $year = date('Y') +1;
+
+        $request->validate([
+            'title' => 'required|string|max:100',
+            'director' => 'required|string|max:50',
+            'genres' => 'required|string|max:50',
+            'plot' => 'required|string',
+            'year' => 'required|numeric|min:1900|max:'.$year
+            ]);
+
         $data = $request->all();
 
         $movieNew = new Movie();
@@ -50,8 +60,13 @@ class MovieController extends Controller
         $movieNew->genres = $data['genres'];
         $movieNew->plot = $data['plot'];
         $movieNew->year = $data['year'];
+        if( !empty($data['cover_img']) && isset($data['cover_img']) ){
+            $movieNew->cover_img = $data['cover_img'];
+        }
         
         $movieNew->save();
+
+        return redirect()->route('movies.index', $movieNew);
     }
 
     /**
