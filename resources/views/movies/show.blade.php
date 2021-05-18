@@ -8,11 +8,15 @@
     </head>
 
     <body>
-        <a href="{{route('movies.index')}}">Torna alla Home</a>
+        <main>
 
-        <h1>{{$movie->title}}</h1>
-        <h2>{{$movie->year}}</h2>
-        <p>{{$movie->plot}}</p>
+            <a href="{{route('movies.index')}}">Torna alla Home</a>
 
+            <h1>{{$movie->title}}</h1>
+            {{-- <h2>{{$movie->year}}</h2> --}}
+            <p>{{$movie->plot}}</p>
+
+        </main>
     </body>
 </html>
+
