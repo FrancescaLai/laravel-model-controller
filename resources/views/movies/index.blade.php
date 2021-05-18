@@ -1,32 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts.main')
 
-		<link rel="stylesheet" href="{{asset('css/app.css')}}">
-		<title>All movies</title>
-	</head>
-	<body>		
-		<main>
-			{{-- Lista film completa--}}
-			<div class="container">
+@section('pageTitle')
+	All Movies
+@endsection
 
-				<h1>All Movies</h1>
-
-				<ol class="listed-movies">
-					@foreach ($movies as $movie)
-					<li>
-						<h3>{{$movie->title}}</h3>
-						<h4>Movie Director: {{$movie->director}}</h4>
-						<p>Genre: {{$movie->genres}}</p>
-						<a href="{{route('movies.show', [ 'movie' => $movie->id ])}}">Dettaglio film</a>
-					</li>
-					@endforeach
-				</ol>
-			</div>
-			{{-- //Lista film completa--}}
-		</main>		
-	</body>
-</html>
+@section('main-content')
+    <div class="mb-3 text-right">
+		<button type="button" class="btn btn-outline-success">Add movie</button>
+	</div>
+	
+	<table class="table table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Director</th>
+				<th scope="col">Genres</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+            @foreach ($movies as $movie)
+		<tr>
+			<td>{{$movie->title}}</td>
+			<td>{{$movie->director}}</td>
+			<td>{{$movie->genres}}</td>
+			<td><a href="{{route('movies.show', [ 'movie' => $movie->id ])}}"><button type="button" class="btn btn-outline-info">Details</button></a></td>
+		</tr>
+		@endforeach
+		</tbody>	
+	</table>
+@endsection
