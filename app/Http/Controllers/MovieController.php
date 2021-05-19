@@ -51,20 +51,23 @@ class MovieController extends Controller
             'year' => 'required|numeric|min:1900|max:'.$year
             ]);
 
-        $data = $request->all();
+        $movieNew = Movie::create($request->all());
 
-        $movieNew = new Movie();
+        //Se in Movie.php decido di usare protected/guarded qui devo 1) riscrivere la riga sopra come è ora
+        // 2) Commentare tutte le righe commentate qui sotto
 
-        $movieNew->title = $data['title'];
-        $movieNew->director = $data['director'];
-        $movieNew->genres = $data['genres'];
-        $movieNew->plot = $data['plot'];
-        $movieNew->year = $data['year'];
-        if( !empty($data['cover_img']) && isset($data['cover_img']) ){
-            $movieNew->cover_img = $data['cover_img'];
-        }
+        // $movieNew = new Movie();
+
+        // $movieNew->title = $data['title'];
+        // $movieNew->director = $data['director'];
+        // $movieNew->genres = $data['genres'];
+        // $movieNew->plot = $data['plot'];
+        // $movieNew->year = $data['year'];
+        // if( !empty($data['cover_img']) && isset($data['cover_img']) ){
+        //     $movieNew->cover_img = $data['cover_img'];
+        // }
         
-        $movieNew->save();
+        // $movieNew->save();
 
         return redirect()->route('movies.index', $movieNew);
     }
@@ -109,8 +112,10 @@ class MovieController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Movie $movie)
     {
-        //
+        $movie->delete();
+
+        return redirect()->route('movies.index')->with('message', 'The movie has been eliminated');
     }
 }

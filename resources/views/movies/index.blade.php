@@ -27,8 +27,20 @@
 			<td>{{$movie->director}}</td>
 			<td>{{$movie->genres}}</td>
 			<td><a href="{{route('movies.show', [ 'movie' => $movie->id ])}}"><button type="button" class="btn btn-outline-info">Details</button></a></td>
+		    <td>
+				<form action="{{route('movies.destroy', ['movie' => $movie->id ])}}" method="POST">
+					@method('DELETE')
+					@csrf
+				    <button type="submit" class="btn btn-outline-danger">Delete</button>
+				</form>
+			</td>
 		</tr>
 		@endforeach
 		</tbody>	
 	</table>
+	@if (session('message'))
+		<div class="alert alert-success">
+			{{ session('message')}}
+		</div>
+	@endif
 @endsection
